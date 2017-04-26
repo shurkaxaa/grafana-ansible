@@ -88,4 +88,4 @@ flaviosr@lsd.ufcg.edu.br
 
 License
 -------
-Apache
+Apache 2
