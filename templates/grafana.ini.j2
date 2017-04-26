@@ -2,14 +2,14 @@
 enabled = true
 auth_url = {{ grafana_keystone_url }}
 v3 = true
-default_domain = default
+default_domain = {{ grafana_keystone_default_domain }}
 default_role = {{ grafana_keystone_default_role }}
 global_admin_roles = {{ grafana_keystone_admin_roles }}
-admin_roles = admin
+admin_roles = {{ grafana_keystone_admin_roles }}
 editor_roles = {{ grafana_keystone_editor_roles }}
 read_editor_roles = {{ grafana_keystone_read_editor_roles }}
-viewer_roles = {{ grafan_keystone_viewer_roles }}
-verify_ssl_cert = true
+viewer_roles = {{ grafana_keystone_viewer_roles }}
+verify_ssl_cert = {{ grafana_keystone_verify_ssl_cert }}
 
 [database]
 type = {{ grafana_db_type }}
