@@ -1,0 +1,64 @@
+---
+# Copyright 2017 Distributed Systems Laboratory (LSD) - UFCG
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# (c) 2017 Flávio Ramalho <flaviosr@lsd.ufcg.edu.br>
+
+grafana_keystone_url: "http://localhost:5000"
+grafana_keystone_default_domain: "default"
+grafana_keystone_default_role: "monasca-read"
+grafana_keystone_admin_roles: "admin"
+grafana_kestone_admin_roles: "admin"
+grafana_keystone_editor_roles: "monasca-user"
+grafana_keystone_read_editor_roles: "monasca-user,monasca-read-only-user"
+grafana_keystone_viewer_roles: "monasca-read-only-user"
+grafana_keystone_verify_ssl_cert: True
+
+grafana_golang_version: "go1.7.linux-amd64"
+grafana_admin_password: password
+grafana_db_type: mysql #Could be any of mysq/sqlite3/postgresql
+grafana_sqlite3_path: "/src/grafana/grafana.sqlite3.db"
+
+grafana_mysql_root_user: root
+grafana_mysql_root_password: root
+grafana_mysql_host: localhost
+grafana_mysql_port: 3306
+grafana_mysql_db: grafana
+grafana_mysql_user: grafana
+grafana_mysql_password: password
+
+grafana_http_addr: 0.0.0.0
+grafana_http_port: 3000
+grafana_http_protocol: http
+
+grafana_data_dir: "/srv/grafana/data"
+grafana_log_dir: "/var/log/grafana"
+grafana_plugins_dir: "/srv/grafana/plugins"
+
+grafana_users_allow_sign_up: False
+
+grafana_plugins:
+  - repo: https://github.com/openstack/monasca-grafana-datasource
+    version: master
+
+grafana_log_mode: "console file"
+grafana_log_level: info
+
+grafana_git_repo: "https://github.com/sapcc/grafana.git"
+
+grafana_clone_dir: "/opt/grafana-src"
+grafana_build_dir: "/opt/grafana-build"
+
+nvm_version: 0.32.1
+node_js_version: 4.0.0

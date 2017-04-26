@@ -1,0 +1,79 @@
+---
+# Copyright 2017 Distributed Systems Laboratory (LSD) - UFCG
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# (c) 2017 Flávio Ramalho <flaviosr@lsd.ufcg.edu.br>
+
+- name: Create the system group
+  group:
+    name: "grafana"
+    state: "present"
+    system: "yes"
+
+- name: Create system user
+  user:
+    name: "grafana"
+    group: "grafana"
+    comment: "grafana system user"
+    shell: "/bin/false"
+    system: "yes"
+    createhome: "no"
+
+- name: Create grafana dirs
+  file:
+    path: "{{ item }}"
+    owner: grafana
+    group: grafana
+    state: directory
+    recurse: yes
+  with_items:
+    - "{{ grafana_log_dir }}"
+    - "{{ grafana_data_dir }}"
+    - "{{ grafana_plugins_dir }}"
+    - "{{ grafana_clone_dir }}"
+    - "{{ grafana_build_dir }}"
+    - "/etc/grafana"
+
+- name: Download NVM install script
+  get_url:
+    url: "https://raw.githubusercontent.com/creationix/nvm/v{{ nvm_version }}/install.sh"
+    dest: "/root/nvm_install.sh"
+    mode: 0750
+  register: nvm_script
+
+- name: Run NVM install script
+  command: "/root/nvm_install.sh"
+  when: nvm_script.changed
+
+- name: Clone grafana git repository
+  git:
+    repo: "{{ grafana_git_repo }}"
+    dest: "{{ grafana_clone_dir }}/grafana"
+    version: "keystone"
+    force: "yes"
+  register: grafana_clone
+
+- name: Copy grafana install script
+  template:
+    src: "install_grafana.sh.j2"
+    dest: "{{ grafana_build_dir }}/install_grafana.sh"
+    mode: "0750"
+  register: grafana_script
+
+- name: Install grafana
+  command: "./install_grafana.sh"
+  args:
+    chdir: "{{ grafana_build_dir }}"
+  when: grafana_script.changed or
+        grafana_clone.changed

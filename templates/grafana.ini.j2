@@ -1,0 +1,45 @@
+[auth.keystone]
+enabled = true
+auth_url = {{ grafana_keystone_url }}
+v3 = true
+default_domain = default
+default_role = {{ grafana_keystone_default_role }}
+global_admin_roles = {{ grafana_keystone_admin_roles }}
+admin_roles = admin
+editor_roles = {{ grafana_keystone_editor_roles }}
+read_editor_roles = {{ grafana_keystone_read_editor_roles }}
+viewer_roles = {{ grafan_keystone_viewer_roles }}
+verify_ssl_cert = true
+
+[database]
+type = {{ grafana_db_type }}
+{% if grafana_db_type == 'mysql' %}
+host = {{ grafana_mysql_host }}:{{ grafana_mysql_port }}
+name = {{ grafana_mysql_db }}
+user = {{ grafana_mysql_user }}
+password = {{ grafana_mysql_password }}
+ssl_mode = false
+{% elif grafana_db_type == 'sqlite3' %}
+path = {{ grafana_sqlite3_path }}
+{% endif %}
+
+[security]
+admin_user = admin
+admin_password = {{ grafana_admin_password }}
+
+[paths]
+logs = {{ grafana_log_dir }}
+data = {{ grafana_data_dir }}
+plugins = {{ grafana_plugins_dir }}
+
+[server]
+http_addr = {{ grafana_http_addr }}
+http_port = {{ grafana_http_port }}
+protocol = {{ grafana_http_protocol }}
+
+[log]
+mode = {{ grafana_log_mode }}
+level = {{ grafana_log_level }}
+
+[users]
+allow_sign_up = {{ grafana_users_allow_sign_up }}

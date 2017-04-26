@@ -1,0 +1,19 @@
+GRAFANA_USER=grafana
+
+GRAFANA_GROUP=grafana
+
+LOG_DIR={{ grafana_log_dir }}
+
+DATA_DIR={{ grafana_data_dir }}
+
+MAX_OPEN_FILES=10000
+
+CONF_DIR=/etc/grafana
+
+CONF_FILE=/etc/grafana/grafana.ini
+
+RESTART_ON_UPGRADE=false
+
+PLUGINS_DIR={{ grafana_plugins_dir }}
+
+PID_FILE=/var/run/grafana/grafana.pid
