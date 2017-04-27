@@ -16,5 +16,6 @@
 # (c) 2017 Flávio Ramalho <flaviosr@lsd.ufcg.edu.br>
 
 dep_packages:
-    - unzip
+    - curl
     - git
+    - unzip

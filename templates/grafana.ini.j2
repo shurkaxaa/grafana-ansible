@@ -3,13 +3,11 @@ enabled = true
 auth_url = {{ grafana_keystone_url }}
 v3 = true
 default_domain = {{ grafana_keystone_default_domain }}
-default_role = {{ grafana_keystone_default_role }}
-global_admin_roles = {{ grafana_keystone_admin_roles }}
 admin_roles = {{ grafana_keystone_admin_roles }}
 editor_roles = {{ grafana_keystone_editor_roles }}
-read_editor_roles = {{ grafana_keystone_read_editor_roles }}
 viewer_roles = {{ grafana_keystone_viewer_roles }}
 verify_ssl_cert = {{ grafana_keystone_verify_ssl_cert }}
+root_ca_pem_file = {{ grafana_keystone_ca_pem_file }}
 
 [database]
 type = {{ grafana_db_type }}
@@ -24,7 +22,7 @@ path = {{ grafana_sqlite3_path }}
 {% endif %}
 
 [security]
-admin_user = admin
+admin_user = grafana
 admin_password = {{ grafana_admin_password }}
 
 [paths]
