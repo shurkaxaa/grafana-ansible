@@ -1,4 +1,4 @@
-Ansible-Grafana
+Grafana-Ansible
 ===============
 
 Install and configure Grafana server to be used with Monasca.
