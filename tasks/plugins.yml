@@ -19,7 +19,7 @@
   git:
     repo: "{{ item.repo }}"
     version: "{{ item.version }}"
-    dest: "{{ grafana_plugins_dir }}"
+    dest: "{{ grafana_plugins_dir }}/{{ item.name }}"
     force: "yes"
   notify:
     - Restart grafana-server

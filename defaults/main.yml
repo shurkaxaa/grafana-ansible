@@ -12,8 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
-# (c) 2017 Flávio Ramalho <flaviosr@lsd.ufcg.edu.br>
 
 grafana_keystone_url: "http://localhost:5000"
 grafana_keystone_default_domain: "default"
@@ -47,7 +45,11 @@ grafana_plugins_dir: "/srv/grafana/plugins"
 grafana_users_allow_sign_up: False
 
 grafana_plugins:
-  - repo: https://github.com/openstack/monasca-grafana-datasource
+  - name: monasca-grafana-datasource
+    repo: https://github.com/openstack/monasca-grafana-datasource
+    version: master
+  - name: monasca-grafana-app
+    repo: https://github.com/stackhpc/monasca-grafana-app
     version: master
 
 grafana_log_mode: "console file"
