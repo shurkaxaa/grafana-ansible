@@ -13,13 +13,11 @@ Role Variables
 
     grafana_keystone_url: "http://localhost:5000"
     grafana_keystone_default_domain: "default"
-    grafana_keystone_default_role: "monasca-read"
     grafana_keystone_admin_roles: "admin"
-    grafana_kestone_admin_roles: "admin"
     grafana_keystone_editor_roles: "monasca-user"
-    grafana_keystone_read_editor_roles: "monasca-user,monasca-read-only-user"
     grafana_keystone_viewer_roles: "monasca-read-only-user"
     grafana_keystone_verify_ssl_cert: True
+    grafana_keystone_ca_pem_file: ""
     
     grafana_golang_version: "go1.7.linux-amd64"
     grafana_admin_password: password
@@ -45,14 +43,18 @@ Role Variables
     grafana_users_allow_sign_up: False
     
     grafana_plugins:
-      - repo: https://github.com/openstack/monasca-grafana-datasource
+      - name: monasca-grafana-datasource
+        repo: https://github.com/openstack/monasca-grafana-datasource
+        version: master
+      - name: monasca-grafana-app
+        repo: https://github.com/stackhpc/monasca-grafana-app
         version: master
     
     grafana_log_mode: "console file"
     grafana_log_level: info
     
     grafana_git_repo: "https://github.com/sapcc/grafana.git"
-     
+    
     grafana_clone_dir: "/opt/grafana-src"
     grafana_build_dir: "/opt/grafana-build"
     
