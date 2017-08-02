@@ -1,0 +1,1357 @@
+{
+  "dashboard":
+  {
+    "id": null,
+    "title": "Ceph Pools Dashboard",
+    "description": "Ceph Pools dashboard.",
+    "tags": [
+      "ceph",
+      "pools",
+      "monasca"
+    ],
+    "style": "dark",
+    "timezone": "browser",
+    "editable": true,
+    "sharedCrosshair": true,
+    "hideControls": true,
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ]
+    },
+    "templating": {
+      "list": [
+        {
+          "auto": true,
+          "auto_count": 10,
+          "auto_min": "1m",
+          "current": {
+            "text": "15s",
+            "value": "15s"
+          },
+          "datasource": null,
+          "hide": 0,
+          "includeAll": false,
+          "label": "Interval",
+          "multi": false,
+          "name": "interval",
+          "options": [
+            {
+              "text": "auto",
+              "value": "$__auto_interval",
+              "selected": false
+            },
+            {
+              "text": "15s",
+              "value": "15s",
+              "selected": true
+            },
+            {
+              "text": "30s",
+              "value": "30s",
+              "selected": false
+            },
+            {
+              "text": "45s",
+              "value": "45s",
+              "selected": false
+            },
+            {
+              "text": "1m",
+              "value": "1m",
+              "selected": false
+            },
+            {
+              "text": "2m",
+              "value": "2m",
+              "selected": false
+            },
+            {
+              "text": "5m",
+              "value": "5m",
+              "selected": false
+            },
+            {
+              "text": "10m",
+              "value": "10m",
+              "selected": false
+            },
+            {
+              "text": "30m",
+              "value": "30m",
+              "selected": false
+            },
+            {
+              "text": "1h",
+              "value": "1h",
+              "selected": false
+            },
+            {
+              "text": "6h",
+              "value": "6h",
+              "selected": false
+            },
+            {
+              "text": "12h",
+              "value": "12h",
+              "selected": false
+            },
+            {
+              "text": "1d",
+              "value": "1d",
+              "selected": false
+            }
+          ],
+          "query": "15s,30s,45s,1m,2m,5m,10m,30m,1h,6h,12h,1d",
+          "refresh": 2,
+          "type": "interval"
+        },
+        {
+          "allValue": null,
+          "current": {
+            "text": "ceph",
+            "value": "ceph"
+          },
+          "datasource": "monasca",
+          "hide": 0,
+          "includeAll": false,
+          "label": "Cluster",
+          "multi": false,
+          "name": "cluster",
+          "options": [
+            {
+              "selected": true,
+              "text": "ceph",
+              "value": "ceph"
+            }
+          ],
+          "query": "ceph_cluster",
+          "refresh": 0,
+          "regex": "",
+          "sort": 1,
+          "tagValuesQuery": null,
+          "tagsQuery": null,
+          "type": "query"
+        },
+        {
+          "allValue": null,
+          "current": {
+            "text": "cinder",
+            "value": "cinder",
+            "tags": []
+          },
+          "datasource": "monasca",
+          "hide": 0,
+          "includeAll": false,
+          "label": "Pool",
+          "multi": false,
+          "name": "pool",
+          "options": [],
+          "query": "pool",
+          "refresh": 1,
+          "regex": "",
+          "sort": 1,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        }
+      ]
+    },
+    "annotations": {
+      "list": []
+    },
+    "refresh": "1m",
+    "schemaVersion": 13,
+    "version": 11,
+    "links": [],
+    "gnetId": 926,
+    "rows": [
+      {
+        "title": "Pool: $pool",
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "datasource": "monasca",
+            "decimals": 2,
+            "editable": true,
+            "error": false,
+            "fill": 4,
+            "grid": {},
+            "height": "",
+            "id": 2,
+            "interval": "$interval",
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": true,
+              "rightSide": true,
+              "show": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 0,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [
+              {
+                "alias": "/^Total.*$/",
+                "fill": 0,
+                "linewidth": 4,
+                "stack": false
+              },
+              {
+                "alias": "/^Raw.*$/",
+                "color": "#BF1B00",
+                "fill": 0,
+                "linewidth": 4
+              }
+            ],
+            "span": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "aggregator": "none",
+                "alias": "Available - @pool",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  },
+                  {
+                    "key": "pool",
+                    "value": "$pool"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_pool_available_bytes{pool=~\"$pool\"}",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Avilable - {{ pool }}",
+                "metric": "ceph.pool.max_avail_bytes",
+                "period": "300",
+                "refId": "A",
+                "step": 60
+              },
+              {
+                "aggregator": "none",
+                "alias": "Used - @pool",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  },
+                  {
+                    "key": "pool",
+                    "value": "$pool"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_pool_used_bytes{pool=~\"$pool\"}",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Used - {{ pool }}",
+                "metric": "ceph.pool.used_bytes",
+                "period": "300",
+                "refId": "B",
+                "step": 60
+              },
+              {
+                "aggregator": "none",
+                "alias": "Total - @pool",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  },
+                  {
+                    "key": "pool",
+                    "value": "$pool"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_pool_used_bytes{pool=~\"$pool\"} + ceph_pool_available_bytes{pool=~\"$pool\"}",
+                "group": false,
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Total - {{ pool }}",
+                "metric": "ceph.pool.total_bytes",
+                "period": "300",
+                "refId": "C",
+                "step": 60
+              },
+              {
+                "aggregator": "none",
+                "alias": "Raw - @pool",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  },
+                  {
+                    "key": "pool",
+                    "value": "$pool"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_pool_raw_used_bytes{pool=~\"$pool\"}",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Raw - {{ pool }}",
+                "metric": "ceph.pool.used_raw_bytes",
+                "period": "300",
+                "refId": "D",
+                "step": 60
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Pool Storage",
+            "tooltip": {
+              "msResolution": false,
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": 0,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": 0,
+                "show": true
+              }
+            ]
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": true,
+            "colors": [
+              "rgba(50, 172, 45, 0.97)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(245, 54, 54, 0.9)"
+            ],
+            "datasource": "monasca",
+            "decimals": 2,
+            "editable": true,
+            "error": false,
+            "format": "percentunit",
+            "gauge": {
+              "maxValue": 1,
+              "minValue": 0,
+              "show": true,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "id": 10,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "span": 2,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": true
+            },
+            "targets": [
+              {
+                "aggregator": "none",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  },
+                  {
+                    "key": "pool",
+                    "value": "$pool"
+                  }
+                ],
+                "error": "",
+                "expr": " ceph_pool_used_bytes{pool=\"$pool\"} / (ceph_pool_available_bytes{pool=\"$pool\"} + ceph_pool_used_bytes{pool=\"$pool\"})",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "metric": "ceph.pool.utilization_perc",
+                "period": "300",
+                "refId": "A",
+                "step": 15
+              }
+            ],
+            "thresholds": "0.7,0.8",
+            "title": "Usage",
+            "type": "singlestat",
+            "valueFontSize": "70%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "current"
+          }
+        ],
+        "showTitle": true,
+        "titleSize": "h6",
+        "height": "250px",
+        "repeat": null,
+        "repeatRowId": null,
+        "repeatIteration": null,
+        "collapse": false
+      },
+      {
+        "title": "New row",
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "datasource": "monasca",
+            "editable": true,
+            "error": false,
+            "fill": 1,
+            "grid": {},
+            "height": "",
+            "id": 7,
+            "legend": {
+              "avg": false,
+              "current": false,
+              "max": false,
+              "min": false,
+              "show": true,
+              "total": false,
+              "values": false
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "span": 6,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "aggregator": "none",
+                "alias": "Objects - @pool",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  },
+                  {
+                    "key": "pool",
+                    "value": "$pool"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_pool_objects_total{pool=~\"$pool\"}",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Objects - {{ pool }}",
+                "metric": "ceph.pool.objects_count",
+                "period": "300",
+                "refId": "A",
+                "step": 60
+              },
+              {
+                "aggregator": "none",
+                "alias": "Dirty Objects - @pool",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  },
+                  {
+                    "key": "pool",
+                    "value": "$pool"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_pool_dirty_objects_total{pool=~\"$pool\"}",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Dirty Objects - {{ pool }}",
+                "metric": "ceph.pool.dirty_objects_count",
+                "period": "300",
+                "refId": "B",
+                "step": 60
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Objects in Pool",
+            "tooltip": {
+              "msResolution": false,
+              "shared": true,
+              "sort": 0,
+              "value_type": "cumulative"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": 0,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": 0,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "datasource": "monasca",
+            "decimals": 2,
+            "editable": true,
+            "error": false,
+            "fill": 1,
+            "grid": {},
+            "id": 4,
+            "interval": "$interval",
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": true,
+              "show": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "span": 6,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "aggregator": "avg",
+                "alias": "Read - @pool",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  },
+                  {
+                    "key": "pool",
+                    "value": "$pool"
+                  }
+                ],
+                "error": "",
+                "expr": "irate(ceph_pool_read_total{pool=~\"$pool\"}[3m])",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Read - {{ pool }}",
+                "metric": "ceph.pool.client.read_op_per_sec",
+                "period": "$interval",
+                "refId": "B",
+                "step": 60
+              },
+              {
+                "aggregator": "avg",
+                "alias": "Write - @pool",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  },
+                  {
+                    "key": "pool",
+                    "value": "$pool"
+                  }
+                ],
+                "error": "",
+                "expr": "irate(ceph_pool_write_total{pool=~\"$pool\"}[3m])",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Write - {{ pool }}",
+                "metric": "ceph.pool.client.write_op_per_sec",
+                "period": "$interval",
+                "refId": "A",
+                "step": 60
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "IOPS",
+            "tooltip": {
+              "msResolution": false,
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "none",
+                "label": "IOPS",
+                "logBase": 1,
+                "max": null,
+                "min": 0,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": "IOPS",
+                "logBase": 1,
+                "max": null,
+                "min": 0,
+                "show": false
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "datasource": "monasca",
+            "decimals": 2,
+            "editable": true,
+            "error": false,
+            "fill": 1,
+            "grid": {},
+            "id": 5,
+            "interval": "$interval",
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": true,
+              "show": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "span": 12,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "aggregator": "avg",
+                "alias": "Read - @pool",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  },
+                  {
+                    "key": "pool",
+                    "value": "$pool"
+                  }
+                ],
+                "error": "",
+                "expr": "irate(ceph_pool_read_bytes_total{pool=\"$pool\"}[3m])",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Read Bytes - {{ pool }}",
+                "metric": "ceph.pool.client.read_bytes_sec",
+                "period": "$interval",
+                "refId": "A",
+                "step": 60
+              },
+              {
+                "aggregator": "avg",
+                "alias": "Write - @pool",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  },
+                  {
+                    "key": "pool",
+                    "value": "$pool"
+                  }
+                ],
+                "error": "",
+                "expr": "irate(ceph_pool_write_bytes_total{pool=\"$pool\"}[3m])",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Written Bytes - {{ pool }}",
+                "metric": "ceph.pool.client.write_bytes_sec",
+                "period": "$interval",
+                "refId": "B",
+                "step": 60
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Throughput",
+            "tooltip": {
+              "msResolution": false,
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "Bps",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": 0,
+                "show": true
+              },
+              {
+                "format": "Bps",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": 0,
+                "show": true
+              }
+            ]
+          }
+        ],
+        "showTitle": false,
+        "titleSize": "h6",
+        "height": "250px",
+        "repeat": null,
+        "repeatRowId": null,
+        "repeatIteration": null,
+        "collapse": false
+      },
+      {
+        "title": "Recovery: $pool",
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 1,
+            "id": 11,
+            "legend": {
+              "avg": false,
+              "current": false,
+              "max": false,
+              "min": false,
+              "show": false,
+              "total": false,
+              "values": false
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "aggregator": "avg",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  },
+                  {
+                    "key": "pool",
+                    "value": "$pool"
+                  }
+                ],
+                "error": "",
+                "metric": "ceph.pool.recovery.recovering_bytes_per_sec",
+                "period": "$interval",
+                "refId": "A"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Bytes/s",
+            "tooltip": {
+              "msResolution": false,
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "Bps",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 1,
+            "id": 12,
+            "legend": {
+              "avg": false,
+              "current": false,
+              "max": false,
+              "min": false,
+              "show": false,
+              "total": false,
+              "values": false
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "aggregator": "avg",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  },
+                  {
+                    "key": "pool",
+                    "value": "$pool"
+                  }
+                ],
+                "error": "",
+                "metric": "ceph.pool.recovery.recovering_keys_per_sec",
+                "period": "$interval",
+                "refId": "A"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Keys/s",
+            "tooltip": {
+              "msResolution": false,
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 1,
+            "id": 13,
+            "legend": {
+              "avg": false,
+              "current": false,
+              "max": false,
+              "min": false,
+              "show": false,
+              "total": false,
+              "values": false
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "aggregator": "avg",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  },
+                  {
+                    "key": "pool",
+                    "value": "$pool"
+                  }
+                ],
+                "error": "",
+                "metric": "ceph.pool.recovery.recovering_objects_per_sec",
+                "period": "$interval",
+                "refId": "A"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Objects/s",
+            "tooltip": {
+              "msResolution": false,
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 1,
+            "id": 14,
+            "legend": {
+              "avg": false,
+              "current": false,
+              "max": false,
+              "min": false,
+              "show": false,
+              "total": false,
+              "values": false
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "aggregator": "none",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  },
+                  {
+                    "key": "pool",
+                    "value": "$pool"
+                  }
+                ],
+                "error": "",
+                "metric": "ceph.pool.recovery.num_bytes_recovered",
+                "period": "$interval",
+                "refId": "A"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Bytes",
+            "tooltip": {
+              "msResolution": false,
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "decbytes",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 1,
+            "id": 15,
+            "legend": {
+              "avg": false,
+              "current": false,
+              "max": false,
+              "min": false,
+              "show": false,
+              "total": false,
+              "values": false
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "aggregator": "none",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  },
+                  {
+                    "key": "pool",
+                    "value": "$pool"
+                  }
+                ],
+                "error": "",
+                "metric": "ceph.pool.recovery.num_keys_recovered",
+                "period": "$interval",
+                "refId": "A"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Keys",
+            "tooltip": {
+              "msResolution": false,
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 1,
+            "id": 16,
+            "legend": {
+              "avg": false,
+              "current": false,
+              "max": false,
+              "min": false,
+              "show": false,
+              "total": false,
+              "values": false
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "aggregator": "none",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  },
+                  {
+                    "key": "pool",
+                    "value": "$pool"
+                  }
+                ],
+                "error": "",
+                "metric": "ceph.pool.recovery.num_objects_recovered",
+                "period": "$interval",
+                "refId": "A"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Objects",
+            "tooltip": {
+              "msResolution": false,
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          }
+        ],
+        "showTitle": true,
+        "titleSize": "h6",
+        "height": "150px",
+        "repeat": null,
+        "repeatRowId": null,
+        "repeatIteration": null,
+        "collapse": true
+      }
+    ]
+  }
+}

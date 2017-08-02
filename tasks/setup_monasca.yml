@@ -1,0 +1,145 @@
+---
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+- name: Deploy monasca dynamic dashboard
+  copy:
+    src: drilldown.js
+    dest: "{{ grafana_build_dir }}/src/github.com/grafana/grafana/public_gen/dashboards/drilldown.js"
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - Restart grafana-server
+
+- name: Wait for grafana-server to come up
+  uri:
+    url: "{{ grafana_url }}"
+  register: result
+  until: result|success
+  retries: 5
+  delay: 2
+
+- name: Check monasca-organisation
+  uri:
+    url: "{{ grafana_url }}/api/orgs/name/{{ grafana_monasca_org_name }}"
+    user: "{{ grafana_admin_user }}"
+    password: "{{ grafana_admin_password }}"
+    force_basic_auth: yes
+    status_code:
+      - 200
+      - 404
+  register: monasca_org_check
+
+- name: Create monasca organisation
+  uri:
+    url: "{{ grafana_url }}/api/orgs"
+    method: POST
+    user: "{{ grafana_admin_user }}"
+    password: "{{ grafana_admin_password }}"
+    force_basic_auth: yes
+    body:
+      name: "admin@default"
+    body_format: json
+    status_code:
+      - 200
+      - 409
+  register: monasca_org
+  changed_when: monasca_org.status == 200
+  when: monasca_org_check.status == 404
+
+- name: Set organisation id
+  set_fact:
+    monasca_org_id: "{{ monasca_org.json.orgId if monasca_org_check.status == 404 else monasca_org_check.json.id }}"
+
+- name: Use monasca org context
+  uri:
+    url: "{{ grafana_url }}/api/user/using/{{ monasca_org_id }}"
+    method: POST
+    user: "{{ grafana_admin_user }}"
+    password: "{{ grafana_admin_password }}"
+    force_basic_auth: yes
+
+- name: Check monasca datasource
+  uri:
+    url: "{{ grafana_url }}/api/datasources/name/Monasca"
+    user: "{{ grafana_admin_user }}"
+    password: "{{ grafana_admin_password }}"
+    force_basic_auth: yes
+    status_code:
+      - 200
+      -  404
+  register: monasca_ds
+  changed_when: False
+
+- name: Configure Monasca datasource
+  uri:
+    url: "{{ grafana_url }}/api/datasources"
+    method: POST
+    user: "{{ grafana_admin_user }}"
+    password: "{{ grafana_admin_password }}"
+    body:
+      name: "monasca"
+      type: "monasca-datasource"
+      url: "http://{{ internal_lb_vip_address }}:{{ monasca_service_port }}"
+      access: "proxy"
+      isDefault: True
+      jsonData:
+        keystoneAuth: True
+    force_basic_auth: yes
+    status_code: 200
+    body_format: json
+  register: monasca_ds_result
+  changed_when: monasca_ds_result.status == 200
+  when: monasca_ds.status == 404
+
+- name: Check monasca dashboards
+  uri:
+    url: "{{ grafana_url }}/api/dashboards/db/{{ item }}"
+    user: "{{ grafana_admin_user }}"
+    password: "{{ grafana_admin_password }}"
+    force_basic_auth: yes
+    status_code:
+      - 200
+      - 404
+  register: monasca_dashboards
+  changed_when: False
+  with_items: "{{ grafana_monasca_dashboards }}"
+
+- name: Import monasca dashboards
+  uri:
+    url: "{{ grafana_url }}/api/dashboards/db"
+    method: POST
+    user: "{{ grafana_admin_user }}"
+    password: "{{ grafana_admin_password }}"
+    force_basic_auth: yes
+    body: "{{ lookup('file', 'dashboards/'+item.item+'.json') }}"
+    status_code: 200
+    body_format: json
+  register: monasca_dashboards_result
+  changed_when: monasca_dashboards_result.status == 200
+  when: item.status == 404
+  with_items: "{{ monasca_dashboards.results }}"
+
+- name: Enable monasca plugin app
+  uri:
+    url: "{{ grafana_url }}/api/plugins/monasca-app/settings"
+    method: POST
+    user: "{{ grafana_admin_user }}"
+    password: "{{ grafana_admin_password }}"
+    body:
+      datasource: "monasca"
+      pinned: true
+      enabled: true
+    force_basic_auth: yes
+    status_code: 200
+    body_format: json

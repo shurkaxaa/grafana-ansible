@@ -24,7 +24,7 @@ path = {{ grafana_sqlite3_path }}
 {% endif %}
 
 [security]
-admin_user = grafana
+admin_user = {{ grafana_admin_user }}
 admin_password = {{ grafana_admin_password }}
 
 [paths]

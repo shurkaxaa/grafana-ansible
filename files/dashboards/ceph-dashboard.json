@@ -1,0 +1,2710 @@
+{
+  "dashboard":
+  {
+    "id": null,
+    "title": "Ceph Dashboard",
+    "description": "Ceph Cluster overview.\r\n",
+    "tags": [
+      "ceph",
+      "cluster",
+      "monasca"
+    ],
+    "style": "dark",
+    "timezone": "browser",
+    "editable": true,
+    "sharedCrosshair": true,
+    "hideControls": true,
+    "time": {
+      "from": "now-3h",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ]
+    },
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "monasca",
+            "value": "monasca"
+          },
+          "hide": 0,
+          "label": "Datasource",
+          "name": "datasource",
+          "options": [],
+          "query": "monasca-datasource",
+          "refresh": 1,
+          "regex": "",
+          "type": "datasource"
+        },
+        {
+          "auto": true,
+          "auto_count": 10,
+          "auto_min": "1m",
+          "current": {
+            "text": "15s",
+            "value": "15s"
+          },
+          "datasource": null,
+          "hide": 0,
+          "includeAll": false,
+          "label": "Interval",
+          "multi": false,
+          "name": "interval",
+          "options": [
+            {
+              "text": "auto",
+              "value": "$__auto_interval",
+              "selected": false
+            },
+            {
+              "text": "15s",
+              "value": "15s",
+              "selected": true
+            },
+            {
+              "text": "30s",
+              "value": "30s",
+              "selected": false
+            },
+            {
+              "text": "45s",
+              "value": "45s",
+              "selected": false
+            },
+            {
+              "text": "1m",
+              "value": "1m",
+              "selected": false
+            },
+            {
+              "text": "2m",
+              "value": "2m",
+              "selected": false
+            },
+            {
+              "text": "5m",
+              "value": "5m",
+              "selected": false
+            },
+            {
+              "text": "10m",
+              "value": "10m",
+              "selected": false
+            },
+            {
+              "text": "30m",
+              "value": "30m",
+              "selected": false
+            },
+            {
+              "text": "1h",
+              "value": "1h",
+              "selected": false
+            },
+            {
+              "text": "6h",
+              "value": "6h",
+              "selected": false
+            },
+            {
+              "text": "12h",
+              "value": "12h",
+              "selected": false
+            },
+            {
+              "text": "1d",
+              "value": "1d",
+              "selected": false
+            }
+          ],
+          "query": "15s,30s,45s,1m,2m,5m,10m,30m,1h,6h,12h,1d",
+          "refresh": 2,
+          "type": "interval"
+        },
+        {
+          "allValue": null,
+          "current": {
+            "tags": [],
+            "text": "ceph",
+            "value": [
+              "ceph"
+            ]
+          },
+          "datasource": "monasca",
+          "hide": 0,
+          "includeAll": true,
+          "label": "Cluster",
+          "multi": true,
+          "name": "cluster",
+          "options": [
+            {
+              "selected": false,
+              "text": "All",
+              "value": "$__all"
+            },
+            {
+              "selected": true,
+              "text": "ceph",
+              "value": "ceph"
+            }
+          ],
+          "query": "ceph_cluster",
+          "refresh": 0,
+          "regex": "",
+          "sort": 0,
+          "tagValuesQuery": null,
+          "tagsQuery": null,
+          "type": "query"
+        }
+      ]
+    },
+    "annotations": {
+      "list": []
+    },
+    "refresh": "1m",
+    "schemaVersion": 13,
+    "version": 12,
+    "links": [],
+    "gnetId": 917,
+    "rows": [
+      {
+        "title": "New row",
+        "panels": [
+          {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": true,
+            "colors": [
+              "rgba(50, 172, 45, 0.97)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(245, 54, 54, 0.9)"
+            ],
+            "datasource": "monasca",
+            "editable": true,
+            "error": false,
+            "format": "none",
+            "gauge": {
+              "maxValue": 100,
+              "minValue": 0,
+              "show": false,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "id": 21,
+            "interval": "1m",
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "span": 2,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": false
+            },
+            "targets": [
+              {
+                "aggregator": "none",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "count(ceph_health_status)",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "metric": "ceph.cluster.health_status",
+                "period": "15",
+                "refId": "A",
+                "step": 60
+              }
+            ],
+            "thresholds": "1,1.1",
+            "title": "Status",
+            "transparent": false,
+            "type": "singlestat",
+            "valueFontSize": "100%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              },
+              {
+              "op": "=",
+              "text": "ERROR",
+              "value": "2"
+              },
+              {
+                "op": "=",
+                "text": "WARNING",
+                "value": "1"
+              },
+              {
+                "op": "=",
+                "text": "HEALTHY",
+                "value": "0"
+              }
+            ],
+            "valueName": "current"
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": true,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "datasource": "monasca",
+            "editable": true,
+            "error": false,
+            "format": "none",
+            "gauge": {
+              "maxValue": 100,
+              "minValue": 0,
+              "show": false,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "id": 14,
+            "interval": "1m",
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "span": 2,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": false
+            },
+            "targets": [
+              {
+                "aggregator": "none",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph.cluster.",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "metric": "ceph.cluster.quorum_size",
+                "period": "300",
+                "refId": "A",
+                "step": 60
+              }
+            ],
+            "thresholds": "2,3",
+            "title": "Monitors In Quorum",
+            "transparent": false,
+            "type": "singlestat",
+            "valueFontSize": "100%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "current"
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": false,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "datasource": "monasca",
+            "editable": true,
+            "error": false,
+            "format": "none",
+            "gauge": {
+              "maxValue": 100,
+              "minValue": 0,
+              "show": false,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "id": 22,
+            "interval": "1m",
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "span": 2,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": true,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": true
+            },
+            "targets": [
+              {
+                "aggregator": "none",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "count(ceph_pool_available_bytes)",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "metric": "ceph.pools.count",
+                "period": "15",
+                "refId": "A",
+                "step": 60
+              }
+            ],
+            "thresholds": "",
+            "title": "Pools",
+            "transparent": false,
+            "type": "singlestat",
+            "valueFontSize": "100%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "current"
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": false,
+            "colors": [
+              "rgba(50, 172, 45, 0.97)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(245, 54, 54, 0.9)"
+            ],
+            "datasource": "monasca",
+            "editable": true,
+            "error": false,
+            "format": "bytes",
+            "gauge": {
+              "maxValue": 100,
+              "minValue": 0,
+              "show": false,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "id": 33,
+            "interval": "1m",
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "span": 2,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": true,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": true
+            },
+            "targets": [
+              {
+                "aggregator": "none",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_cluster_capacity_bytes",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "metric": "ceph.cluster.total_bytes",
+                "period": "300",
+                "refId": "A",
+                "step": 60
+              }
+            ],
+            "thresholds": "0.025,0.1",
+            "title": "Cluster Capacity",
+            "transparent": false,
+            "type": "singlestat",
+            "valueFontSize": "100%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "current"
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": false,
+            "colors": [
+              "rgba(50, 172, 45, 0.97)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(245, 54, 54, 0.9)"
+            ],
+            "datasource": "monasca",
+            "editable": true,
+            "error": false,
+            "format": "bytes",
+            "gauge": {
+              "maxValue": 100,
+              "minValue": 0,
+              "show": false,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "id": 34,
+            "interval": "1m",
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "span": 2,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": true,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": true
+            },
+            "targets": [
+              {
+                "aggregator": "avg",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph.cluster",
+                "group": false,
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "metric": "ceph.cluster.total_used_bytes",
+                "period": "$interval",
+                "refId": "A",
+                "step": 60
+              }
+            ],
+            "thresholds": "0.025,0.1",
+            "title": "Used Capacity",
+            "transparent": false,
+            "type": "singlestat",
+            "valueFontSize": "100%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "current"
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": true,
+            "colors": [
+              "rgba(50, 172, 45, 0.97)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(245, 54, 54, 0.9)"
+            ],
+            "datasource": "monasca",
+            "editable": true,
+            "error": false,
+            "format": "percentunit",
+            "gauge": {
+              "maxValue": 1,
+              "minValue": 0,
+              "show": true,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "id": 23,
+            "interval": "1m",
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "span": 2,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": false
+            },
+            "targets": [
+              {
+                "aggregator": "none",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph.c",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "metric": "ceph.cluster.utilization_perc",
+                "period": "15",
+                "refId": "A",
+                "step": 60
+              }
+            ],
+            "thresholds": "0.7,0.8",
+            "title": "Utilization",
+            "transparent": false,
+            "type": "singlestat",
+            "valueFontSize": "100%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "current",
+            "decimals": 2
+          }
+        ],
+        "showTitle": false,
+        "titleSize": "h6",
+        "height": "150px",
+        "repeat": null,
+        "repeatRowId": null,
+        "repeatIteration": null,
+        "collapse": false
+      },
+      {
+        "title": "New row",
+        "panels": [
+          {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": false,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "datasource": "monasca",
+            "editable": true,
+            "error": false,
+            "format": "none",
+            "gauge": {
+              "maxValue": 100,
+              "minValue": 0,
+              "show": false,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "id": 26,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "span": 1,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": false
+            },
+            "targets": [
+              {
+                "aggregator": "none",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph.cluster.",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "metric": "ceph.cluster.osds.in_count",
+                "period": "300",
+                "refId": "A",
+                "step": 60
+              }
+            ],
+            "thresholds": "",
+            "title": "OSDs IN",
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "current"
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+              "rgba(50, 172, 45, 0.97)",
+              "rgba(237, 40, 40, 0.89)",
+              "rgba(245, 54, 54, 0.9)"
+            ],
+            "datasource": "monasca",
+            "editable": true,
+            "error": false,
+            "format": "none",
+            "gauge": {
+              "maxValue": 100,
+              "minValue": 0,
+              "show": false,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "id": 27,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "span": 1,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": false
+            },
+            "targets": [
+              {
+                "aggregator": "none",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_osds - ceph_osds_in",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "metric": "ceph.cluster.osds.out_count",
+                "period": "300",
+                "refId": "A",
+                "step": 60
+              }
+            ],
+            "thresholds": "1,1",
+            "title": "OSDs OUT",
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "current"
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": false,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "datasource": "monasca",
+            "editable": true,
+            "error": false,
+            "format": "none",
+            "gauge": {
+              "maxValue": 100,
+              "minValue": 0,
+              "show": false,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "id": 28,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "span": 1,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": false
+            },
+            "targets": [
+              {
+                "aggregator": "none",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "sum(ceph_osd_up)",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "metric": "ceph.cluster.osds.up_count",
+                "period": "300",
+                "refId": "A",
+                "step": 60
+              }
+            ],
+            "thresholds": "",
+            "title": "OSDs UP",
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "current"
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+              "rgba(50, 172, 45, 0.97)",
+              "rgba(237, 40, 40, 0.89)",
+              "rgba(245, 54, 54, 0.9)"
+            ],
+            "datasource": "monasca",
+            "editable": true,
+            "error": false,
+            "format": "none",
+            "gauge": {
+              "maxValue": 100,
+              "minValue": 0,
+              "show": false,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "id": 29,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "span": 1,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": false
+            },
+            "targets": [
+              {
+                "aggregator": "none",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph.cluster.",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "metric": "ceph.cluster.osds.down_count",
+                "period": "300",
+                "refId": "A",
+                "step": 60
+              }
+            ],
+            "thresholds": "1,1",
+            "title": "OSDs DOWN",
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "current"
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": true,
+            "colors": [
+              "rgba(50, 172, 45, 0.97)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(245, 54, 54, 0.9)"
+            ],
+            "datasource": "monasca",
+            "editable": true,
+            "error": false,
+            "format": "none",
+            "gauge": {
+              "maxValue": 100,
+              "minValue": 0,
+              "show": false,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "id": 30,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "span": 2,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": true,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": true
+            },
+            "targets": [
+              {
+                "aggregator": "none",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_total_pgs/ceph_osds",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "metric": "ceph.cluster.pgs.avg_per_osd",
+                "period": "$inter",
+                "refId": "A",
+                "step": 60
+              }
+            ],
+            "thresholds": "250,300",
+            "title": "Agerage PGs per OSD",
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "current"
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": true,
+            "colors": [
+              "rgba(50, 172, 45, 0.97)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(245, 54, 54, 0.9)"
+            ],
+            "datasource": "monasca",
+            "editable": true,
+            "error": false,
+            "format": "s",
+            "gauge": {
+              "maxValue": 100,
+              "minValue": 0,
+              "show": false,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "id": 31,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "span": 2,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": true,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": true
+            },
+            "targets": [
+              {
+                "aggregator": "avg",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph.osds.",
+                "group": false,
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "metric": "ceph.osd.perf.apply_latency_seconds",
+                "period": "$interval",
+                "refId": "A",
+                "step": 60
+              }
+            ],
+            "thresholds": "0.03,0.06",
+            "title": "Agerage OSD Apply Latency",
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "avg"
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": true,
+            "colors": [
+              "rgba(50, 172, 45, 0.97)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(245, 54, 54, 0.9)"
+            ],
+            "datasource": "monasca",
+            "editable": true,
+            "error": false,
+            "format": "s",
+            "gauge": {
+              "maxValue": 100,
+              "minValue": 0,
+              "show": false,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "id": 32,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "span": 2,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": true,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": true
+            },
+            "targets": [
+              {
+                "aggregator": "avg",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph.osd",
+                "group": false,
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "metric": "ceph.osd.perf.commit_latency_seconds",
+                "period": "$interval",
+                "refId": "A",
+                "step": 60
+              }
+            ],
+            "thresholds": "0.01,0.05",
+            "title": "Agerage OSD Commit Latency",
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "avg"
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": true,
+            "colors": [
+              "rgba(50, 172, 45, 0.97)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(245, 54, 54, 0.9)"
+            ],
+            "datasource": "monasca",
+            "editable": true,
+            "error": false,
+            "format": "s",
+            "gauge": {
+              "maxValue": 100,
+              "minValue": 0,
+              "show": false,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "id": 24,
+            "interval": "1m",
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "repeat": null,
+            "span": 2,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": true,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": true
+            },
+            "targets": [
+              {
+                "aggregator": "avg",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "avg(ceph_monitor_latency_seconds)",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "metric": "ceph.monitor.latency",
+                "period": "$interval",
+                "refId": "A",
+                "step": 60
+              }
+            ],
+            "thresholds": "70,80",
+            "title": "Average Monitor Latency",
+            "transparent": false,
+            "type": "singlestat",
+            "valueFontSize": "100%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "current"
+          }
+        ],
+        "showTitle": false,
+        "titleSize": "h6",
+        "height": "100px",
+        "repeat": null,
+        "repeatRowId": null,
+        "repeatIteration": null,
+        "collapse": false
+      },
+      {
+        "title": "CLUSTER",
+        "panels": [
+          {
+            "aliasColors": {
+              "Available": "#EAB839",
+              "Total Capacity": "#447EBC",
+              "Used": "#BF1B00",
+              "total_avail": "#6ED0E0",
+              "total_space": "#7EB26D",
+              "total_used": "#890F02"
+            },
+            "bars": false,
+            "datasource": "monasca",
+            "editable": true,
+            "error": false,
+            "fill": 4,
+            "grid": {},
+            "height": "300",
+            "id": 1,
+            "interval": "$interval",
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": true,
+              "show": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 0,
+            "links": [],
+            "minSpan": null,
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [
+              {
+                "alias": "Total Capacity",
+                "fill": 0,
+                "linewidth": 3,
+                "stack": false
+              }
+            ],
+            "span": 4,
+            "stack": true,
+            "steppedLine": false,
+            "targets": [
+              {
+                "aggregator": "avg",
+                "alias": "Available",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "dsType": "influxdb",
+                "error": "",
+                "expr": "ceph_cluster_available_bytes",
+                "groupBy": [
+                  {
+                    "params": [
+                      "$interval"
+                    ],
+                    "type": "time"
+                  },
+                  {
+                    "params": [
+                      "null"
+                    ],
+                    "type": "fill"
+                  }
+                ],
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Available",
+                "metric": "ceph.cluster.total_avail_bytes",
+                "period": "$interval",
+                "policy": "default",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                  [
+                    {
+                      "params": [
+                        "value"
+                      ],
+                      "type": "field"
+                    },
+                    {
+                      "params": [],
+                      "type": "mean"
+                    }
+                  ]
+                ],
+                "step": 60,
+                "tags": []
+              },
+              {
+                "aggregator": "avg",
+                "alias": "Used",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "dsType": "influxdb",
+                "error": "",
+                "expr": "ceph_cluster_used_bytes",
+                "groupBy": [
+                  {
+                    "params": [
+                      "$interval"
+                    ],
+                    "type": "time"
+                  },
+                  {
+                    "params": [
+                      "null"
+                    ],
+                    "type": "fill"
+                  }
+                ],
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Used",
+                "metric": "ceph.cluster.total_used_bytes",
+                "period": "$interval",
+                "policy": "default",
+                "refId": "B",
+                "resultFormat": "time_series",
+                "select": [
+                  [
+                    {
+                      "params": [
+                        "value"
+                      ],
+                      "type": "field"
+                    },
+                    {
+                      "params": [],
+                      "type": "mean"
+                    }
+                  ]
+                ],
+                "step": 60,
+                "tags": []
+              },
+              {
+                "aggregator": "avg",
+                "alias": "Total Capacity",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "dsType": "influxdb",
+                "error": "",
+                "expr": "ceph_cluster_capacity_bytes",
+                "groupBy": [
+                  {
+                    "params": [
+                      "$interval"
+                    ],
+                    "type": "time"
+                  },
+                  {
+                    "params": [
+                      "null"
+                    ],
+                    "type": "fill"
+                  }
+                ],
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Total Capacity",
+                "metric": "ceph.cluster.total_bytes",
+                "period": "$interval",
+                "policy": "default",
+                "refId": "C",
+                "resultFormat": "time_series",
+                "select": [
+                  [
+                    {
+                      "params": [
+                        "value"
+                      ],
+                      "type": "field"
+                    },
+                    {
+                      "params": [],
+                      "type": "mean"
+                    }
+                  ]
+                ],
+                "step": 60,
+                "tags": []
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Capacity",
+            "tooltip": {
+              "msResolution": false,
+              "shared": true,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ],
+            "decimals": 2
+          },
+          {
+            "aliasColors": {
+              "Total Capacity": "#7EB26D",
+              "Used": "#BF1B00",
+              "total_avail": "#6ED0E0",
+              "total_space": "#7EB26D",
+              "total_used": "#890F02"
+            },
+            "bars": false,
+            "datasource": "monasca",
+            "decimals": 0,
+            "editable": true,
+            "error": false,
+            "fill": 1,
+            "grid": {},
+            "height": "300",
+            "id": 3,
+            "interval": "$interval",
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": true,
+              "show": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "minSpan": null,
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "aggregator": "avg",
+                "alias": "Write",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_client_io_write_ops",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Write",
+                "metric": "ceph.cluster.client.write_ops",
+                "period": "$interval",
+                "refId": "A",
+                "step": 60
+              },
+              {
+                "aggregator": "avg",
+                "alias": "Read",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_client_io_read_ops",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Read",
+                "metric": "ceph.cluster.client.read_ops",
+                "period": "$interval",
+                "refId": "B",
+                "step": 60
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "IOPS",
+            "tooltip": {
+              "msResolution": true,
+              "shared": true,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "none",
+                "label": "",
+                "logBase": 1,
+                "max": null,
+                "min": 0,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": 0,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "datasource": "monasca",
+            "editable": true,
+            "error": false,
+            "fill": 1,
+            "grid": {},
+            "height": "300",
+            "id": 7,
+            "interval": "$interval",
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": true,
+              "show": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "aggregator": "avg",
+                "alias": "Write",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_client_io_write_bytes",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Write",
+                "metric": "ceph.cluster.client.write_bytes_per_sec",
+                "period": "$interval",
+                "refId": "A",
+                "step": 60
+              },
+              {
+                "aggregator": "avg",
+                "alias": "Read",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_client_io_read_bytes",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Read",
+                "metric": "ceph.cluster.client.read_bytes_per_sec",
+                "period": "$interval",
+                "refId": "B",
+                "step": 60
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Throughput",
+            "tooltip": {
+              "msResolution": false,
+              "shared": true,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "Bps",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": 0,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": 0,
+                "show": true
+              }
+            ]
+          }
+        ],
+        "showTitle": true,
+        "titleSize": "h6",
+        "height": "250px",
+        "repeat": null,
+        "repeatRowId": null,
+        "repeatIteration": null,
+        "collapse": false
+      },
+      {
+        "title": "New row",
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "datasource": "monasca",
+            "editable": true,
+            "error": false,
+            "fill": 1,
+            "grid": {},
+            "hideTimeOverride": false,
+            "id": 18,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "hideEmpty": false,
+              "hideZero": false,
+              "max": false,
+              "min": false,
+              "rightSide": true,
+              "show": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [
+              {
+                "alias": "/^Total.*$/",
+                "stack": false
+              }
+            ],
+            "span": 12,
+            "stack": true,
+            "steppedLine": false,
+            "targets": [
+              {
+                "aggregator": "avg",
+                "alias": "Total",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_cluster_objects",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Total",
+                "metric": "ceph.cluster.objects.total_count",
+                "period": "$interval",
+                "refId": "A",
+                "step": 60
+              },
+              {
+                "aggregator": "avg",
+                "alias": "Degraded",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_degraded_objects",
+                "group": false,
+                "hide": false,
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Degraded",
+                "metric": "ceph.cluster.objects.degraded_count",
+                "period": "$interval",
+                "refId": "B",
+                "step": 60
+              },
+              {
+                "aggregator": "avg",
+                "alias": "Misplaced",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_misplaced_objects",
+                "hide": false,
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Misplaced",
+                "metric": "ceph.cluster.objects.misplaced_count",
+                "period": "$interval",
+                "refId": "C",
+                "step": 60
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Objects in the Cluster",
+            "tooltip": {
+              "msResolution": false,
+              "shared": true,
+              "sort": 1,
+              "value_type": "individual"
+            },
+            "transparent": false,
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "datasource": "monasca",
+            "editable": true,
+            "error": false,
+            "fill": 1,
+            "grid": {},
+            "id": 19,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": false,
+              "min": false,
+              "rightSide": true,
+              "show": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [
+              {
+                "alias": "/^Total.*$/",
+                "stack": false
+              }
+            ],
+            "span": 6,
+            "stack": true,
+            "steppedLine": false,
+            "targets": [
+              {
+                "aggregator": "avg",
+                "alias": "Total",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph.cluster",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Total",
+                "metric": "ceph.cluster.pgs.total_count",
+                "period": "$interval",
+                "refId": "A",
+                "step": 60
+              },
+              {
+                "aggregator": "avg",
+                "alias": "Degraded",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_degraded_pgs",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Degraded",
+                "metric": "ceph.cluster.pgs.degraded_count",
+                "period": "$interval",
+                "refId": "B",
+                "step": 60
+              },
+              {
+                "aggregator": "avg",
+                "alias": "Stale",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_stale_pgs",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Stale",
+                "metric": "ceph.cluster.pgs.stale_count",
+                "period": "$interval",
+                "refId": "C",
+                "step": 60
+              },
+              {
+                "aggregator": "avg",
+                "alias": "Unclean",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_unclean_pgs",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Unclean",
+                "metric": "ceph.cluster.pgs.unclean_count",
+                "period": "$interval",
+                "refId": "D",
+                "step": 60
+              },
+              {
+                "aggregator": "avg",
+                "alias": "Undersized",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_undersized_pgs",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Undersized",
+                "metric": "ceph.cluster.pgs.undersized_count",
+                "period": "$interval",
+                "refId": "E",
+                "step": 60
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "PGs",
+            "tooltip": {
+              "msResolution": false,
+              "shared": true,
+              "sort": 1,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": 0,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "datasource": "monasca",
+            "editable": true,
+            "error": false,
+            "fill": 1,
+            "grid": {},
+            "id": 20,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": false,
+              "min": false,
+              "rightSide": true,
+              "show": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [
+              {
+                "alias": "/^Total.*$/",
+                "stack": false
+              }
+            ],
+            "span": 6,
+            "stack": true,
+            "steppedLine": false,
+            "targets": [
+              {
+                "aggregator": "avg",
+                "alias": "Degraded",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_stuck_degraded_pgs",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Degraded",
+                "metric": "ceph.cluster.pgs.stuck_degraded_count",
+                "period": "$interval",
+                "refId": "F",
+                "step": 60
+              },
+              {
+                "aggregator": "avg",
+                "alias": "Stale",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_stuck_stale_pgs",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Stale",
+                "metric": "ceph.cluster.pgs.stuck_stale_count",
+                "period": "$interval",
+                "refId": "A",
+                "step": 60
+              },
+              {
+                "aggregator": "avg",
+                "alias": "Unclean",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_stuck_unclean_pgs",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Unclean",
+                "metric": "ceph.cluster.pgs.stuck_unclean_count",
+                "period": "$interval",
+                "refId": "B",
+                "step": 60
+              },
+              {
+                "aggregator": "avg",
+                "alias": "Undersized",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_stuck_undersized_pgs",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Undersized",
+                "metric": "ceph.cluster.pgs.stuck_undersized_count",
+                "period": "$interval",
+                "refId": "C",
+                "step": 60
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Stuck PGs",
+            "tooltip": {
+              "msResolution": false,
+              "shared": true,
+              "sort": 1,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": 0,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          }
+        ],
+        "showTitle": false,
+        "titleSize": "h6",
+        "height": "250px",
+        "repeat": null,
+        "repeatRowId": null,
+        "repeatIteration": null,
+        "collapse": false
+      },
+      {
+        "title": "Recovery",
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "datasource": "monasca",
+            "editable": true,
+            "error": false,
+            "fill": 1,
+            "grid": {},
+            "id": 15,
+            "legend": {
+              "avg": false,
+              "current": false,
+              "max": false,
+              "min": false,
+              "show": false,
+              "total": false,
+              "values": false
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "aggregator": "avg",
+                "alias": "Bytes",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_recovery_io_bytes",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Bytes",
+                "metric": "ceph.cluster.recovery.bytes",
+                "period": "$interval",
+                "refId": "A",
+                "step": 60
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Bytes",
+            "tooltip": {
+              "msResolution": false,
+              "shared": true,
+              "sort": 0,
+              "value_type": "cumulative"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": 0,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "datasource": "monasca",
+            "editable": true,
+            "error": false,
+            "fill": 1,
+            "grid": {},
+            "id": 16,
+            "legend": {
+              "avg": false,
+              "current": false,
+              "max": false,
+              "min": false,
+              "show": false,
+              "total": false,
+              "values": false
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [
+              {
+                "alias": "/^.*/",
+                "color": "#E0752D"
+              }
+            ],
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "aggregator": "avg",
+                "alias": "Keys",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph.cluster.recovery.keys",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Keys",
+                "metric": "ceph.cluster.recovery.keys",
+                "period": "$interval",
+                "refId": "A",
+                "step": 60
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Keys",
+            "tooltip": {
+              "msResolution": false,
+              "shared": true,
+              "sort": 0,
+              "value_type": "cumulative"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": 0,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "datasource": "monasca",
+            "editable": true,
+            "error": false,
+            "fill": 1,
+            "grid": {},
+            "id": 17,
+            "legend": {
+              "avg": false,
+              "current": false,
+              "max": false,
+              "min": false,
+              "show": false,
+              "total": false,
+              "values": false
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [
+              {
+                "alias": "/^.*$/",
+                "color": "#890F02"
+              }
+            ],
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "aggregator": "avg",
+                "alias": "Objects",
+                "dimensions": [
+                  {
+                    "key": "ceph_cluster",
+                    "value": "$cluster"
+                  }
+                ],
+                "error": "",
+                "expr": "ceph_recovery_io_objects",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "Objects",
+                "metric": "ceph.cluster.recovery.objects",
+                "period": "$interval",
+                "refId": "A",
+                "step": 60
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Objects",
+            "tooltip": {
+              "msResolution": false,
+              "shared": true,
+              "sort": 0,
+              "value_type": "cumulative"
+            },
+            "type": "graph",
+            "xaxis": {
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": 0,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          }
+        ],
+        "showTitle": true,
+        "titleSize": "h6",
+        "height": "150px",
+        "repeat": null,
+        "repeatRowId": null,
+        "repeatIteration": null,
+        "collapse": false
+      }
+    ]
+  }
+}

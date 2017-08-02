@@ -42,23 +42,18 @@
   notify:
     - Restart grafana-server
 
-- name: Deploy Grafana Config Ini file
+- name: Deploy Grafana Config files
   template:
-    src: grafana.ini.j2
-    dest: /etc/grafana/grafana.ini
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
     owner: root
     group: root
     mode: 0644
-  notify:
-      - Restart grafana-server
-
-- name: Deploy Grafana Default file
-  template:
-    src: grafana-default.j2
-    dest: /etc/default/grafana
-    owner: root
-    group: root
-    mode: 0644
+  with_items:
+    - src: grafana.ini.j2
+      dest: /etc/grafana/grafana.ini
+    - src: grafana-default.j2
+      dest: /etc/default/grafana
   notify:
     - Restart grafana-server
 

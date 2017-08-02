@@ -20,3 +20,5 @@
 - include: install.yml
 - include: plugins.yml
 - include: configure.yml
+- include: setup_monasca.yml
+  when: grafana_monasca_setup
