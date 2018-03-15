@@ -62,7 +62,7 @@ grafana_plugins:
     repo: https://github.com/openstack/monasca-grafana-datasource
     version: master
   - name: monasca-grafana-app
-    repo: https://github.com/stackhpc/monasca-grafana-app
+    repo: https://github.com/shurkaxaa/monasca-grafana-app.git
     version: master
 
 grafana_log_mode: "console file"
