@@ -13,35 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: Deploy Grafana Server systemd config
-  template:
-    src: grafana-server.systemd.j2
-    dest: /etc/systemd/system/grafana-server.service
-    owner: root
-    group: root
-    mode: 0755
-  notify:
-    - Reload systemd
-  when: ansible_service_mgr == 'systemd'
-
-- name: Copy Grafana init script
-  template:
-    src: grafana-server.upstart.conf.j2
-    dest: /etc/init/grafana-server.conf
-    mode: 0644
-    owner: root
-    group: root
-  register: upstart_init
-  notify:
-    - Restart grafana-server
-  when: ansible_service_mgr == 'upstart'
-
-- name: Reload init scripts
-  command: initctl reload-configuration
-  when: upstart_init | changed
-  notify:
-    - Restart grafana-server
-
 - name: Deploy Grafana Config files
   template:
     src: "{{ item.src }}"

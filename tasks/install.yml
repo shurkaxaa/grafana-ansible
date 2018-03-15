@@ -19,7 +19,3 @@
     state: present
   with_items:
     - '{{ dep_packages }}'
-
-- include: install_go.yml
-
-- include: install_grafana.yml
