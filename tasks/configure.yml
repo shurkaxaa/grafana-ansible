@@ -43,7 +43,7 @@
     - { section: "server", option: "http_addr", value: "{{ grafana_http_addr }}" }
     - { section: "server", option: "http_port", value: "{{ grafana_http_port }}" }
     - { section: "server", option: "protocol", value: "{{ grafana_http_protocol }}" }
-    - { section: "server", option: "root_url" }
+    - { section: "server", option: "root_url", state: "absent" }
     - { section: "users", option: "allow_sign_up", value: "false" }
   notify:
     - Restart grafana-server
