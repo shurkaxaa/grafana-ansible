@@ -13,18 +13,37 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: Deploy Grafana Config files
-  template:
-    src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
-    owner: root
-    group: root
-    mode: 0644
+- ini_file:
+    dest: /etc/grafana/grafana.ini
+    section: "{{item.section}}"
+    option: "{{item.option}}"
+    value: "{{item.value|default(omit)}}"
+    state: "{{item.state|default(omit)}}"
   with_items:
-    - src: grafana.ini.j2
-      dest: /etc/grafana/grafana.ini
-    - src: grafana-default.j2
-      dest: /etc/default/grafana
+    # keystone auth
+    # - { section: "auth.basic", option: "enabled", value: "false" }
+    - { section: "auth.keystone", option: "enabled", value: "true" }
+    - { section: "auth.keystone", option: "auth_url", value: "{{ grafana_keystone_url }}" }
+    - { section: "auth.keystone", option: "v3", value: "true" }
+    - { section: "auth.keystone", option: "default_domain", value: "{{ grafana_keystone_default_domain }}" }
+    - { section: "auth.keystone", option: "admin_roles", value: "{{ grafana_keystone_admin_roles }}" }
+    - { section: "auth.keystone", option: "editor_roles", value: "{{ grafana_keystone_editor_roles }}" }
+    - { section: "auth.keystone", option: "viewer_roles", value: "{{ grafana_keystone_viewer_roles }}" }
+    - { section: "auth.keystone", option: "root_ca_pem_file", value: "{{ grafana_keystone_ca_pem_file }}" }
+    # database
+    - { section: "database", option: "type", value: "{{ grafana_db_type }}" }
+    - { section: "database", option: "host", value: "{{ grafana_mysql_host }}:{{ grafana_mysql_port }}" }
+    - { section: "database", option: "name", value: "{{ grafana_mysql_db }}" }
+    - { section: "database", option: "user", value: "{{ grafana_mysql_user }}" }
+    - { section: "database", option: "password", value: "{{ grafana_mysql_password }}" }
+    # security
+    - { section: "security", option: "admin_user", value: "{{ grafana_admin_user }}" }
+    - { section: "security", option: "admin_password", value: "{{ grafana_admin_password }}" }
+    # server
+    - { section: "server", option: "http_addr", value: "{{ grafana_http_addr }}" }
+    - { section: "server", option: "http_port", value: "{{ grafana_http_port }}" }
+    - { section: "server", option: "protocol", value: "{{ grafana_http_protocol }}" }
+    - { section: "users", option: "allow_sign_up", value: "false" }
   notify:
     - Restart grafana-server
 
