@@ -4,7 +4,7 @@
 Description=Grafana instance
 Documentation=http://docs.grafana.org
 Wants=network-online.target
-After=network-online.target
+After=network-online.target mysql.service
 
 [Service]
 EnvironmentFile=/etc/default/grafana
@@ -18,8 +18,11 @@ ExecStartPre=/bin/mkdir -p /var/run/grafana
 ExecStartPre=/bin/chown -R grafana:grafana /var/run/grafana
 ExecStart={{ grafana_build_dir }}/src/github.com/grafana/grafana/bin/grafana-server -config=${CONF_FILE} -pidfile=${PID_FILE}
 LimitNOFILE=10000
-TimeoutStopSec=20
 UMask=0027
+TimeoutSec=120
+TimeoutStopSec=20
+Restart=on-failure
+RestartSec=30
 
 [Install]
 WantedBy=multi-user.target
