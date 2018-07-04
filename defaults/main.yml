@@ -59,7 +59,7 @@ grafana_users_allow_sign_up: False
 
 grafana_plugins:
   - name: monasca-grafana-datasource
-    repo: https://github.com/openstack/monasca-grafana-datasource
+    repo: https://github.com/shurkaxaa/monasca-grafana-datasource.git
     version: master
   - name: monasca-grafana-app
     repo: https://github.com/shurkaxaa/monasca-grafana-app.git
