@@ -26,7 +26,7 @@
     - { section: "auth.keystone", option: "auth_url", value: "{{ grafana_keystone_url }}" }
     - { section: "auth.keystone", option: "v3", value: "true" }
     - { section: "auth.keystone", option: "default_domain", value: "{{ grafana_keystone_default_domain }}" }
-    - { section: "auth.keystone", option: "admin_roles", value: "{{ grafana_keystone_admin_roles }}" }
+    - { section: "auth.keystone", option: "admin_roles", value: "{{ grafana_keystone_admin_roles | join(',') }}" }
     - { section: "auth.keystone", option: "editor_roles", value: "{{ grafana_keystone_editor_roles }}" }
     - { section: "auth.keystone", option: "viewer_roles", value: "{{ grafana_keystone_viewer_roles }}" }
     - { section: "auth.keystone", option: "root_ca_pem_file", value: "{{ grafana_keystone_ca_pem_file }}" }

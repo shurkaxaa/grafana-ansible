@@ -143,3 +143,19 @@
     force_basic_auth: yes
     status_code: 200
     body_format: json
+
+- keystone:
+    command: "ensure_role"
+    endpoint: "{{ keystone_service_adminurl }}"
+    login_user: "{{ keystone_admin_user_name }}"
+    login_password: "{{ keystone_auth_admin_password }}"
+    login_project_name: "{{ keystone_admin_tenant_name }}"
+
+    role_name: "{{ item }}"
+    insecure: "{{ keystone_service_adminuri_insecure }}"
+  register: add_roles
+  until: add_roles|success
+  retries: 5
+  delay: 10
+  with_flattened:
+    - "{{grafana_keystone_admin_roles}}"
