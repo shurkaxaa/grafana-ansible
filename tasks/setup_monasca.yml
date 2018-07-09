@@ -137,7 +137,8 @@
     user: "{{ grafana_admin_user }}"
     password: "{{ grafana_admin_password }}"
     body:
-      datasource: "monasca"
+      jsonData:
+        datasourceName: "monasca"
       pinned: true
       enabled: true
     force_basic_auth: yes
