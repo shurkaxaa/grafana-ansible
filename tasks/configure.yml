@@ -45,6 +45,7 @@
     - { section: "server", option: "protocol", value: "{{ grafana_http_protocol }}" }
     - { section: "server", option: "root_url", state: "absent" }
     - { section: "users", option: "allow_sign_up", value: "false" }
+    - { section: "users", option: "default_theme", value: "light" }
   notify:
     - Restart grafana-server
 
